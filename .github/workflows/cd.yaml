@@ -1,0 +1,26 @@
+name: cd
+
+on:
+  push:
+    paths-ignore:
+      - '**.md'
+
+jobs:
+  openfaas-deployment:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: OpenFaaS build and push
+        uses: mrsimpson/action-openfaas-build@master
+        with:
+          docker-username: ${{ secrets.DOCKER_USERNAME }}
+          docker-password: ${{ secrets.DOCKER_PASSWORD }}
+          platforms: linux/amd64,linux/arm/v7
+          deploy: ${{ github.ref == 'refs/heads/main' }}
+          openfaas-gateway: ${{ secrets.OPENFAAS_GATEWAY }}
+          openfaas-username: ${{ secrets.OPENFAAS_USERNAME }}
+          openfaas-password: ${{ secrets.OPENFAAS_PASSWORD }}
