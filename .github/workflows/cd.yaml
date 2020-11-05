@@ -20,7 +20,7 @@ jobs:
           docker-username: ${{ secrets.DOCKER_USERNAME }}
           docker-password: ${{ secrets.DOCKER_PASSWORD }}
           platforms: linux/amd64,linux/arm/v7
-          deploy: ${{ github.ref == 'refs/heads/main' }}
+          deploy: ${{ github.ref == 'refs/heads/master' }}
           openfaas-gateway: ${{ secrets.OPENFAAS_GATEWAY }}
           openfaas-username: ${{ secrets.OPENFAAS_USERNAME }}
           openfaas-password: ${{ secrets.OPENFAAS_PASSWORD }}
