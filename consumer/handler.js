@@ -7,7 +7,7 @@ module.exports = async (event, context) => {
     'status': 'Received input: ' + JSON.stringify(event.body)
   }
 
-  await delay(1000);
+  // await delay(1000);
 
   console.log(result)
 
